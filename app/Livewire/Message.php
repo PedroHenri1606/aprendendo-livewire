@@ -8,9 +8,10 @@ use Livewire\Component;
 
 class Message extends Component
 {
-
     public $autor;
+
     public $mensagem;
+
     public $mensagens;
 
     public function mount(){
@@ -30,5 +31,15 @@ class Message extends Component
         ]);
 
         $this->mensagens->prepend($mensagem);
+    }
+
+    public function deletar($id){
+
+        $mensagem = Mensagem::findOrFail($id);
+        $mensagem->delete();
+
+        $this->mensagens = $this->mensagens->filter(function ($mensagem) use ($id){
+            return $mensagem->id !== $id;
+        });
     }
 }

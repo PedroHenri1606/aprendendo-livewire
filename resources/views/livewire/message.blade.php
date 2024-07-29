@@ -4,12 +4,12 @@
         <div class="col-4">
             <div class="col-12">
                 <label for="autor" class="fw-bolder"> Autor </label>
-                <input type="text" id="autor" name="autor" class="form-control" wire:model.live.debounce.500="autor">
+                <input type="text" id="autor" name="autor" class="form-control" wire:model.live.debounce.200="autor">
             </div>
 
             <div class="col-12">
                 <label for="autor" class="fw-bolder"> Mensagem </label>
-                <input type="text" id="autor" name="mensagem" class="form-control" wire:model.live.debounce.500="mensagem">
+                <input type="text" id="autor" name="mensagem" class="form-control" wire:model.live.debounce.200="mensagem">
             </div>
 
             <div class="col-12">
@@ -50,6 +50,15 @@
 
                             <div class="fw-bolder">
                                 Assunto: {{ $mensagem->mensagem }}
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+
+                                <button type="submit" class="btn btn-warning mt-4">Editar</button>
+
+                                <form method="POST" wire:submit="deletar({{ $mensagem->id }})">
+                                    <button type="submit" class="btn btn-danger ms-2 mt-4">Deletar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
