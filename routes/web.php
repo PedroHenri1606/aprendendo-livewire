@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Counter;
+use App\Livewire\Message;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.app');
 });
+
+Route::get('/mensagem', Message::class)->name('mensagem');
+Route::get('/contador', Counter::class)->name('contador');

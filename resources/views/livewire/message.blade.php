@@ -73,7 +73,7 @@
             <div class="row p-4 justify-content-center align-items-center">
                 @foreach ($mensagens as $mensagem)
                     
-                    <div class="col-5 card shadow m-2" style="border-radius: 20px">
+                    <div class="col-12 col-sm-12 col-lg-5 card shadow m-2" style="border-radius: 20px">
                         
                         <div class="card-body">
 
