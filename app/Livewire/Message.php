@@ -9,6 +9,8 @@ use Livewire\Component;
 class Message extends Component
 {
     public $mensagemId;
+
+    public $titulo;
     public $autor;
     public $mensagem;
     public $mensagens;
@@ -24,12 +26,22 @@ class Message extends Component
 
     public function salvar(){
 
+        $rules = [
+            'titulo' => 'required',
+            'autor' => 'required',
+            'mensagem' => 'required',
+        ];
+
+        $this->validate($rules);
+
         $mensagem = Mensagem::create([
+            'titulo' => $this->titulo,
             'autor' => $this->autor,
             'mensagem' => $this->mensagem,
         ]);
 
         $this->mensagens->prepend($mensagem);
+        
     }
 
     public function deletar($id){
@@ -47,6 +59,7 @@ class Message extends Component
         $mensagem = Mensagem::findOrFail($id);
 
         $this->mensagemId = $mensagem->id;
+        $this->titulo = $mensagem->titulo;
         $this->autor = $mensagem->autor;
         $this->mensagem = $mensagem->mensagem;
     }
@@ -56,16 +69,18 @@ class Message extends Component
         $mensagem = Mensagem::findOrFail($this->mensagemId);
         
         $mensagem->update([
+            'titulo' => $this->titulo,
             'autor' => $this->autor,
             'mensagem' => $this->mensagem,
         ]);
 
         $this->mensagens = Mensagem::orderBy('id', 'desc')->get();
 
-        $this->cancelar();
+        $this->retornar();
     }
 
-    public function cancelar(){
+    public function retornar(){
+        $this->titulo = '';
         $this->autor = '';
         $this->mensagem = '';
         $this->mensagemId = null; 
