@@ -13,7 +13,19 @@
             </div>
 
             <div class="col-12">
-                <button type="submit" class="btn btn-primary mt-2 w-100" wire:click="salvar"> Enviar Mensagem </button>
+                @if($mensagemId)
+                    <div class="row">
+                        <div class="col-9">
+                            <button type="submit" class="btn btn-warning mt-2 w-100" wire:click="atualizar"> Salvar Alterações </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary mt-2 w-100" wire:click="cancelar"> Cancelar </button>
+                        </div>
+                    </div>
+                @else             
+                    <button type="submit" class="btn btn-primary mt-2 w-100" wire:click="salvar"> Enviar Mensagem </button>
+                @endif
             </div>
 
             <div class="col-12 card mt-4">
@@ -44,17 +56,17 @@
                         <p class="h5 mt-2 text-center">Mensagem de id: {{ $mensagem->id }}</p>
                         <div class="card-body bg-black-900">
                 
-                            <div class="fw-bolder">
-                                Autor: {{ $mensagem->autor}}
+                            <div>
+                                <span class="fw-bolder"> Autor: </span> {{ $mensagem->autor}}
                             </div>
 
-                            <div class="fw-bolder">
-                                Assunto: {{ $mensagem->mensagem }}
+                            <div>
+                                <span class="fw-bolder"> Assunto: </span> {{ $mensagem->mensagem }}
                             </div>
 
                             <div class="d-flex justify-content-center">
 
-                                <button type="submit" class="btn btn-warning mt-4">Editar</button>
+                                <button type="submit" class="btn btn-warning mt-4" wire:click="editar({{ $mensagem->id }})">Editar</button>
 
                                 <form method="POST" wire:submit="deletar({{ $mensagem->id }})">
                                     <button type="submit" class="btn btn-danger ms-2 mt-4">Deletar</button>
