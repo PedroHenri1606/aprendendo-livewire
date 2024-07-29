@@ -1,7 +1,7 @@
 <div>
-    <div class="row mt-5 justify-content-center">
+    <div class="row justify-content-around p-4">
 
-        <div class="col-4 card shadow p-4" style="border-radius: 20px">
+        <div class="col-12 col-sm-12 col-lg-4 card shadow p-4 mt-4" style="border-radius: 20px">
 
             <div class="col-12">
                 <label for="autor" class="fw-bolder"> Titulo </label>
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-7 card shadow ms-4" style="border-radius: 20px">
+        <div class="col-12 col-sm-12 col-lg-7 mt-4 card shadow justify-content-center" style="border-radius: 20px">
 
             <p class="h3 text-center mt-4"> Mensagens Enviadas </p>
 
